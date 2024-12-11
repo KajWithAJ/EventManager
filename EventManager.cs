@@ -58,6 +58,7 @@ namespace Oxide.Plugins
 
 
         internal const string ADMIN_PERMISSION = "eventmanager.admin";
+        internal const string ORGANIZER_PERMISSION = "eventmanager.organizer";
         #endregion
         
         #region Oxide Hooks
@@ -68,6 +69,7 @@ namespace Oxide.Plugins
             eventData = Interface.Oxide.DataFileSystem.GetFile("EventManager/event_data");
 
             permission.RegisterPermission(ADMIN_PERMISSION, this);
+            permission.RegisterPermission(ORGANIZER_PERMISSION, this);
 
             Instance = this;
             IsUnloading = false;
@@ -1985,6 +1987,7 @@ namespace Oxide.Plugins
         #region Event Config
         public class EventConfig
         {            
+            public bool OrganizerCanOpen { get; set; } = false;
             public string EventName { get; set; } = string.Empty;
             public string EventType { get; set; } = string.Empty;
 
